@@ -10,16 +10,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(get_user_params)
     if @user.save
-      flash[:success] = "User was successfully created!"
+      flash[:success] = "User was successfully created! Welcome!"
+      redirect_to @user
     else
-      flash[:error] = "Something went wrong =("
       render 'new'
     end
   end
 
   private
     def get_user_params
-      params.require(:user).permit(:name, :email, :passord, 
+      params.require(:user).permit(:name, :email, :password, 
         :password_confirmation)
     end
 end
