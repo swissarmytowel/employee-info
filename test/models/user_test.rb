@@ -47,4 +47,12 @@ class UserTest < ActiveSupport::TestCase
     @test_user_instance.save
     assert_equal mixed_case_email.downcase, @test_user_instance.reload.email
   end
+
+  test "associated employees should be destroyed" do
+    @test_user_instance.save
+    @test_user_instance.employees.create!(name: "Lorem Ipsum", telegram_id: "@sosi")
+    assert_difference 'Employee.count', -1 do
+      @test_user_instance.destroy
+    end
+  end
 end
