@@ -3,6 +3,9 @@ class StaticPagesController < ApplicationController
   end
 
   def login
+    if is_logged_in?
+      flash.now[:danger] = "Already logged in!"
+    end
   end
 
   def signup

@@ -5,8 +5,13 @@
         <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Home',  root_path %></li>
         <li>
+             <% if is_logged_in? %>
+                <%= link_to @current_user.name, @current_user%>
+            <% end %>
+        </li>
+        <li>
             <% if is_logged_in? %>
-                <%= link_to " #{@current_user.name} | Log out", logout_path%>
+                <%= link_to "Log out", logout_path%>
             <% else %>
                 <%= link_to 'Log in', login_path%>
             <% end %>
