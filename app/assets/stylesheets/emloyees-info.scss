@@ -3,6 +3,20 @@
 
 $light-gray: #777;
 
+@mixin box_sizing {
+    -moz-box-sizing:    border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing:         border-box;
+}
+
+.debug_dump {
+clear: both;
+float: left;
+width: 100%;
+margin-top: 45px;
+@include box_sizing;
+}
+
 body {
     padding-top: 60px;
 }
@@ -61,6 +75,17 @@ p {
     } 
 }
 
+.home-btn-box {
+    h2 {
+        font-size: 1.2em;
+        letter-spacing: -1px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+        font-weight: normal;
+        color: $light-gray;
+    }
+}
 .footer {
     font-size: 1.1em;
     margin-top: 45px;
@@ -102,4 +127,15 @@ aside {
         margin-top: 0px;
       }
     }
+  }
+
+  input, textarea, select, .uneditable-input {
+    border: 1px solid #bbb;
+    width: 100%;
+    margin-bottom: 15px;
+    @include box_sizing;
+  }
+  
+  input {
+    height: auto !important;
   }

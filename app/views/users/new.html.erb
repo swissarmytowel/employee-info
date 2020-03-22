@@ -4,8 +4,31 @@
     <title><%= yield(:title) %></title>
   </head>
   <body>
-    <div class="center jumbotron">
-      <h2>Sign Up</h2>
+    <div class="jumbotron">
+      <h1>Sign Up</h1>
+      <h2> 
+        Sign up to become a member and add your employees 
+        and their project information lists
+      </h2>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <%= form_with(model: @user, local: true) do |form|%>
+            <%= form.label :name %>
+            <%= form.text_field :name%>
+
+            <%= form.label :email %>
+            <%= form.email_field :email%>
+            
+            <%= form.label :password %>
+            <%= form.password_field :password%>
+
+            <%= form.label :password_confirmation %>
+            <%= form.password_field :password_confirmation%>
+
+            <%= form.submit "Create", class: "btn btn-primary"%>
+          <% end %>
+        </div>
+      </div>
     </div>
   </body>
 </html>
