@@ -1,3 +1,26 @@
-// Place all the styles related to the StaticPages controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+$light-gray: #777;
+
+.home-btn-box{
+    width: 60%;
+    margin: 0 auto;
+
+    #sign-up-btn{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    #log-in-btn{
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        letter-spacing: -1px;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        text-align: center;
+        font-weight: normal;
+        color: $light-gray;
+    }
+}
