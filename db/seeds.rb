@@ -9,5 +9,9 @@ user = User.first
 20.times do
     name = Faker::Games::Witcher.character
     telegram_id = "@#{Faker::Internet.username}"
-    user.employees.create!(name: name, telegram_id: telegram_id)
+    salary = Faker::Number.between(from: 15000, to: 150000)
+    working_hours = Faker::Number.between(from: 15, to: 50)
+    job = Faker::Company.profession
+    user.employees.create!(name: name, telegram_id: telegram_id, 
+            salary: salary, working_hours: working_hours, job: job)
 end
