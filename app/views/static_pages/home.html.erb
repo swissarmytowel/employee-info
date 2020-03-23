@@ -8,13 +8,19 @@
       <h1>Welcome to the employees-info</h1>
       <h2> This is a web app specifically designed to allow you to add your team members and list all of their projects </h2>
       <div class="home-btn-box">
-        <div id="sign-up-btn">
-          <%= link_to 'Sign up', signup_path, class: "btn btn-lg btn-block btn-primary" %>
-        </div>
-        <h2> Or </h2>
-        <div id="log-in-btn">
-          <%= link_to 'Log in', login_path, class: "btn btn-block btn-primary"%>
-        </div>
+        <% if is_logged_in? %>
+          <div id="sign-up-btn">
+            <%= link_to 'Got to your profile!', get_current_user, class: "btn btn-block btn-primary"%>
+          </div>
+        <% else %>
+          <div id="sign-up-btn">
+            <%= link_to 'Sign up', signup_path, class: "btn btn-lg btn-block btn-primary" %>
+          </div>
+          <h2> Or </h2>
+          <div id="log-in-btn">
+            <%= link_to 'Log in', login_path, class: "btn btn-block btn-primary"%>
+          </div>
+        <% end %>
       </div>
     </div>
   </body>

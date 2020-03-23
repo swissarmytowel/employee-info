@@ -6,7 +6,8 @@
   <body>
     <div class="container">
       <div class="sign-up-content jumbotron">
-        <h1>Edit <%= @employee.name %></h1>
+        <h3>Edit <%= @employee.name %></h3>
+   
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
             <%= form_with(model: @employee, local: true) do |form|%>
@@ -18,8 +19,19 @@
               <%= form.label :telegram_id %>
               <%= form.text_field :telegram_id, class: "form-control"%>
 
-              <%= form.submit "Create", class: "btn btn-primary"%>
+              <%= form.label :salary %>
+              <%= form.number_field :salary, class: "form-control"%>
+
+              <%= form.label :working_hours %>
+              <%= form.number_field :working_hours, class: "form-control"%>
+
+              <%= form.label :job %>
+              <%= form.text_field :job, class: "form-control"%>
+
+              <%= form.submit "Update", class: "btn btn-primary"%>
+
             <% end %>
+            <%= button_to 'Back', get_current_user, method: :get, class: "btn btn-danger" %>
           </div>
         </div>
       </div>

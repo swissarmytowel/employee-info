@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get '/edit',    to: 'employees#edit'
   
   post '/login',  to: 'sessions#create'
-  post '/create',  to: 'employees#create'
-  
+  post '/create', to: 'employees#create'
+  post '/edit',   to: 'employees#update'
+
   resources :users
   resources :employees
 end
