@@ -1,7 +1,6 @@
 <tr >
-    <td scope="row"> <%=  employee.id %> </td>
-    <td>  <%=  employee.name %> </td>
-    <td>  <%=  employee.telegram_id %> </td>
+    <td> <%= employee.name %> </td>
+    <td> <%= employee.telegram_id %> </td>
     <td> 
         <ul>
             <li> Twitter </li>
@@ -9,5 +8,9 @@
             <li> Microsoft Windows 10</li>
         </ul>
     </td>
-    <td> <%= link_to "edit", "#", class:"btn btn-sm btn-primary" %> <%= link_to "delete", "#", class:"btn btn-sm btn-danger" %><td>
+    <td> 
+        <%= link_to "edit",  edit_path, class:"btn btn-sm btn-primary" %> 
+        <%= link_to "delete", employee, method: :delete, 
+                        data: { confirm: "You sure?" }, class:"btn btn-sm btn-danger" %>
+    <td>
 </tr>
