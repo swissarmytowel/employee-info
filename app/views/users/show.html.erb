@@ -11,7 +11,7 @@
           <h2> <%= @user.email %></h2>
         </section>
         <div class="container">
-          <h1> Your employees </h1>
+          <h1> Your employees <%= link_to 'Add', create_path, class: "btn btn-success profile-btn-add"%> </h1>
           <% if @user.employees.any? %>
             <table class="table table-hover">
               <thead class="thead-dark">
@@ -27,6 +27,7 @@
                 <%= render @employees %>
               </tbody>
             </table>
+            <%= will_paginate @employees %>
           <% end %>
         </div>
       </aside>
