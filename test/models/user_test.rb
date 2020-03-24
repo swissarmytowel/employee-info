@@ -50,7 +50,8 @@ class UserTest < ActiveSupport::TestCase
 
   test "associated employees should be destroyed" do
     @test_user_instance.save
-    @test_user_instance.employees.create!(name: "Lorem Ipsum", telegram_id: "@sosi")
+    @test_user_instance.employees.create!(name: "Lorem Ipsum", telegram_id: "@test", 
+            salary: 10000, working_hours: 50, job: "back-end")
     assert_difference 'Employee.count', -1 do
       @test_user_instance.destroy
     end
