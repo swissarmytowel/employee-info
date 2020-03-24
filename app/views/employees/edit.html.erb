@@ -11,7 +11,7 @@
           <div class="col-md-6">
             <%= form_with(model: @employee, local: true, class: "myForm") do |form|%>
               <%= render 'shared/error_messages',  object: form.object%>
-
+              
               <%= form.label :name %>
               <%= form.text_field :name, class: "form-control"%>
 
@@ -39,12 +39,15 @@
                   <% @employee.projects.each do |p|%>
                     <tr> 
                       <td> <b><%= p.name %></b> </td>
-                      <td> <%= link_to 'delete', "#", class:"btn btn-danger btn-sm" %> </td>
+                      <td> 
+                          <%= link_to 'delete', @employee.assignments.find_by(project_id: p.id), method: :delete, class:"btn btn-danger btn-sm" %> 
+                      </td>
                     </tr>
                   <% end %>
                 </table>
              </div>
-            <%= form_with(model: @employee.projects.build, local: true, class: "myForm") do |form|%>
+            <%= form_with(model: @employee.projects.build, local: true) do |form|%>
+              <%= form.hidden_field :employee_id, :value => @employee.id%>
               <%= form.text_field :name, class: "form-control"%>
               <%= form.submit "Add", class: "btn btn-primary"%>
             <% end %>

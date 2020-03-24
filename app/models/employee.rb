@@ -2,7 +2,7 @@ class Employee < ApplicationRecord
   belongs_to :user
   
   has_many :assignments, dependent: :destroy
-  has_many :projects, through: :assignments
+  has_many :projects, -> { distinct }, through: :assignments, dependent: :destroy
 
   validates :user_id, presence: true
   validates :name, presence: true, length: { maximum: 80}
@@ -12,7 +12,9 @@ class Employee < ApplicationRecord
 
   # Assign project to employee
   def assign(project)
-    projects << project
+    if !is_assigned?(project)
+      projects << project
+    end
   end
 
   # Remove project from employee
