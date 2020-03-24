@@ -6,6 +6,10 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 user = User.first
+projects = []
+6.times do
+    projects << Project.create(name: Faker::App.name)
+end
 20.times do
     name = Faker::Games::Witcher.character
     telegram_id = "@#{Faker::Internet.username}"
@@ -14,7 +18,6 @@ user = User.first
     job = Faker::Company.profession
     e = user.employees.create(name: name, telegram_id: telegram_id, 
             salary: salary, working_hours: working_hours, job: job)
-    3.times do
-        e.assign(Project.create(name: Faker::App.name))
-    end
+            
+    (0..Faker::Number.between(from: 2, to: 5)).each {|i|  e.assign(projects[i])}
 end
