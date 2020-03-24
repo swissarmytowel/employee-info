@@ -7,10 +7,9 @@
     <div class="container">
       <div class="sign-up-content jumbotron">
         <h3>Edit <%= @employee.name %></h3>
-   
         <div class="row">
-          <div class="col-md-6 col-md-offset-3">
-            <%= form_with(model: @employee, local: true) do |form|%>
+          <div class="col-md-6">
+            <%= form_with(model: @employee, local: true, class: "myForm") do |form|%>
               <%= render 'shared/error_messages',  object: form.object%>
 
               <%= form.label :name %>
@@ -28,10 +27,28 @@
               <%= form.label :job %>
               <%= form.text_field :job, class: "form-control"%>
 
-              <%= form.submit "Update", class: "btn btn-primary"%>
-
+              <%= form.submit "Update info", class: "btn btn-primary"%>
             <% end %>
             <%= button_to 'Back', get_current_user, method: :get, class: "btn btn-danger" %>
+          </div>
+          <div class="col-md-6">
+            <div class="container">
+              <h3> Projects </h3>
+              <div class="table-responsive">
+                <table class="table">
+                  <% @employee.projects.each do |p|%>
+                    <tr> 
+                      <td> <b><%= p.name %></b> </td>
+                      <td> <%= link_to 'delete', "#", class:"btn btn-danger btn-sm" %> </td>
+                    </tr>
+                  <% end %>
+                </table>
+             </div>
+            <%= form_with(model: @employee.projects.build, local: true, class: "myForm") do |form|%>
+              <%= form.text_field :name, class: "form-control"%>
+              <%= form.submit "Add", class: "btn btn-primary"%>
+            <% end %>
+            </div>
           </div>
         </div>
       </div>

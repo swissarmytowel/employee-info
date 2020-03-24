@@ -13,4 +13,5 @@ Rails.application.routes.draw do
 
   resources :users
   resources :employees
+  resources :projects
 end

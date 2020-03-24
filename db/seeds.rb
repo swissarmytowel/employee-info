@@ -14,7 +14,7 @@ user = User.first
     job = Faker::Company.profession
     e = user.employees.create(name: name, telegram_id: telegram_id, 
             salary: salary, working_hours: working_hours, job: job)
-    # 3.times do
-    #     e.assign(Project.create(name: Faker::App.name))
-    # end
+    3.times do
+        e.assign(Project.create(name: Faker::App.name))
+    end
 end
