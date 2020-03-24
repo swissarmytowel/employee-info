@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2020_03_24_032837) do
 
   create_table "assignments", force: :cascade do |t|
-    t.integer "employee_id", null: false
-    t.integer "project_id", null: false
+    t.integer "employee_id"
+    t.integer "project_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index "\"employee\"", name: "index_assignments_on_employee"
@@ -53,7 +53,5 @@ ActiveRecord::Schema.define(version: 2020_03_24_032837) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  add_foreign_key "assignments", "employees"
-  add_foreign_key "assignments", "projects"
   add_foreign_key "employees", "users"
 end
