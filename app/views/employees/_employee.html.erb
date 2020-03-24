@@ -5,11 +5,15 @@
     <td> <%= employee.working_hours %> </td>
     <td> <%= employee.job %> </td>
     <td> 
-        <ul>
-            <li> Twitter </li>
-            <li> Momentum </li>
-            <li> Microsoft Windows 10</li>
-        </ul>
+        <% if employee.projects.any? %>
+            <ul>
+                <% employee.projects.each do |p|%>
+                    <li> <%= p.name %> </li>
+                <% end %>
+            </ul>
+        <% else %>
+            No projects 
+        <% end %>
     </td>
     <td> 
         <%= link_to "edit",  edit_employee_path(employee), class:"btn btn-sm btn-primary" %> 

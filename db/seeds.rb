@@ -12,6 +12,9 @@ user = User.first
     salary = Faker::Number.between(from: 15000, to: 150000)
     working_hours = Faker::Number.between(from: 15, to: 50)
     job = Faker::Company.profession
-    user.employees.create!(name: name, telegram_id: telegram_id, 
+    e = user.employees.create(name: name, telegram_id: telegram_id, 
             salary: salary, working_hours: working_hours, job: job)
+    # 3.times do
+    #     e.assign(Project.create(name: Faker::App.name))
+    # end
 end
