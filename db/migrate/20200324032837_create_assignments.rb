@@ -1,8 +1,8 @@
 class CreateAssignments < ActiveRecord::Migration[6.0]
   def change
     create_table :assignments do |t|
-      t.references :employee, null: false, foreign_key: true
-      t.references :project, null: false, foreign_key: true
+      t.references :employee
+      t.references :project
 
       t.timestamps
     end
