@@ -6,8 +6,5 @@ class CreateAssignments < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
-    # add_index :assignments, :employee
-    # add_index :assignments, :project
-    # add_index :assignments, [:employee, :project]
   end
 end
