@@ -1,0 +1,20 @@
+ <%= form_with(model: @employee, local: true) do |form|%>
+    <%= render 'shared/error_messages',  object: form.object%>
+
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control"%>
+
+    <%= form.label :telegram_id %>
+    <%= form.text_field :telegram_id, class: "form-control"%>
+
+    <%= form.label :salary %>
+    <%= form.number_field :salary, class: "form-control"%>
+
+    <%= form.label :working_hours %>
+    <%= form.number_field :working_hours, class: "form-control"%>
+
+    <%= form.label :job %>
+    <%= form.text_field :job, class: "form-control"%>
+
+    <%= form.submit btn_text, class: "btn btn-primary"%>
+<% end %>

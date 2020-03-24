@@ -1,6 +1,6 @@
 class Employee < ApplicationRecord
   belongs_to :user
-  
+  # Setting up a many-many relationship using Assignments table
   has_many :assignments, dependent: :destroy
   has_many :projects, -> { distinct }, through: :assignments, dependent: :destroy
 

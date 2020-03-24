@@ -1,8 +1,10 @@
 module SessionsHelper
+    # Helper to log in user in session 
     def log_in(user)
         session[:user_id] = user.id
     end
 
+    # Helper to get a current logged in user instance
     def get_current_user
         if session[:user_id]
             @current_user ||= User.find_by(id: session["user_id"])

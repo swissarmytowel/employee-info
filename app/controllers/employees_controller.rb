@@ -1,5 +1,6 @@
 class EmployeesController < ApplicationController
-    before_action :correct_user, only: [:destroy, :edit]
+    # We need to setup the right employee from current user first
+    before_action :set_up_employee, only: [:destroy, :edit]
 
     def new
         @employee = get_current_user.employees.build if is_logged_in?
@@ -35,11 +36,13 @@ class EmployeesController < ApplicationController
     end
 
     private
+        # Filter posted parameters
         def employee_params
             params.require(:employee).permit(:name, :telegram_id, :salary, :working_hours, :job)
         end
 
-        def correct_user
+        # Set up current employee based on params passed and current user
+        def set_up_employee
             @employee = get_current_user.employees.find_by(id: params[:id])
             redirect_to root_url if @employee.nil?
         end

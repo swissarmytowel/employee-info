@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    # Pagination is needed when a list of employees exceeds 15 entries 
     @employees = @user.employees.paginate(page: params[:page], per_page: 15)
   
   end

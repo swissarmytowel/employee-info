@@ -6,29 +6,10 @@
   <body>
     <div class="container">
       <div class="sign-up-content jumbotron">
-        <h3>Edit <%= @employee.name %></h3>
+        <h3> Edit <%= @employee.name %> </h3>
         <div class="row">
           <div class="col-md-6">
-            <%= form_with(model: @employee, local: true, class: "myForm") do |form|%>
-              <%= render 'shared/error_messages',  object: form.object%>
-              
-              <%= form.label :name %>
-              <%= form.text_field :name, class: "form-control"%>
-
-              <%= form.label :telegram_id %>
-              <%= form.text_field :telegram_id, class: "form-control"%>
-
-              <%= form.label :salary %>
-              <%= form.number_field :salary, class: "form-control"%>
-
-              <%= form.label :working_hours %>
-              <%= form.number_field :working_hours, class: "form-control"%>
-
-              <%= form.label :job %>
-              <%= form.text_field :job, class: "form-control"%>
-
-              <%= form.submit "Update info", class: "btn btn-primary"%>
-            <% end %>
+            <%= render 'employees/form', btn_text: "Update" %>
             <%= button_to 'Back', get_current_user, method: :get, class: "btn btn-danger" %>
           </div>
           <div class="col-md-6">
@@ -36,21 +17,24 @@
               <h3> Projects </h3>
               <div class="table-responsive">
                 <table class="table">
-                  <% @employee.projects.each do |p|%>
-                    <tr> 
-                      <td> <b><%= p.name %></b> </td>
-                      <td> 
-                          <%= link_to 'delete', @employee.assignments.find_by(project_id: p.id), method: :delete, class:"btn btn-danger btn-sm" %> 
+                  <% @employee.projects.each do |p| %>
+                    <tr>
+                      <td>
+                        <b><%= p.name %></b>
+                      </td>
+                      <td>
+                        <%= link_to 'delete', @employee.assignments.find_by(project_id: p.id),
+                              method: :delete, class:"btn btn-danger btn-sm" %>
                       </td>
                     </tr>
                   <% end %>
                 </table>
-             </div>
-            <%= form_with(model: @employee.projects.build, local: true) do |form|%>
-              <%= form.hidden_field :employee_id, :value => @employee.id%>
-              <%= form.text_field :name, class: "form-control"%>
-              <%= form.submit "Add", class: "btn btn-primary"%>
-            <% end %>
+              </div>
+              <%= form_with(model: @employee.projects.build, local: true) do |form|%>
+                <%= form.hidden_field :employee_id, :value => @employee.id%>
+                <%= form.text_field :name, class: "form-control"%>
+                <%= form.submit "Add", class: "btn btn-primary"%>
+              <% end %>
             </div>
           </div>
         </div>

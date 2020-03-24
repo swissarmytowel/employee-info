@@ -1,15 +1,15 @@
 <tr >
-    <th> <%= employee.name %> </th>
-    <td> <%= employee.telegram_id %> </td>
-    <td> <%= employee.salary %> &#8381;</td>
-    <td> <%= employee.working_hours %> </td>
-    <td> <%= employee.job %> </td>
-    <td> 
-        <%= render employee.projects %>
-    </td>
-    <td> 
-        <%= link_to "edit",  edit_employee_path(employee), class:"btn btn-sm btn-primary" %> 
-        <%= link_to "delete", employee, method: :delete, 
+  <th> <%= employee.name %> </th>
+  <td> <%= employee.telegram_id %> </td>
+  <td> <%= employee.salary %> &#8381;</td>
+  <td> <%= employee.working_hours %> </td>
+  <td> <%= employee.job %> </td>
+  <td>
+    <%= render employee.projects %>
+  </td>
+  <td>
+    <%= link_to "edit",  edit_employee_path(employee), class:"btn btn-sm btn-primary" %>
+    <%= link_to "delete", employee, method: :delete, 
                         data: { confirm: "You sure?" }, class:"btn btn-sm btn-danger" %>
-    <td>
+  <td>
 </tr>

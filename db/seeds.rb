@@ -1,11 +1,6 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+# Seed DB with initial sample data from Faker
 user = User.first
+#precompute projects
 projects = []
 6.times do
     projects << Project.create(name: Faker::App.name)
@@ -16,8 +11,9 @@ end
     salary = Faker::Number.between(from: 15000, to: 150000)
     working_hours = Faker::Number.between(from: 15, to: 50)
     job = Faker::Company.profession
+    # Create employee
     e = user.employees.create(name: name, telegram_id: telegram_id, 
             salary: salary, working_hours: working_hours, job: job)
-            
+    # And give him 3 - 6 projects
     (0..Faker::Number.between(from: 2, to: 5)).each {|i|  e.assign(projects[i])}
 end

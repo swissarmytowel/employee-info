@@ -9,26 +9,7 @@
         <h3>Add employee</h3>
         <div class="row">
           <div class="col-md-6 col-md-offset-3">
-            <%= form_with(model: @employee, local: true) do |form|%>
-              <%= render 'shared/error_messages',  object: form.object%>
-
-              <%= form.label :name %>
-              <%= form.text_field :name, class: "form-control"%>
-
-              <%= form.label :telegram_id %>
-              <%= form.text_field :telegram_id, class: "form-control"%>
-
-              <%= form.label :salary %>
-              <%= form.number_field :salary, class: "form-control"%>
-
-              <%= form.label :working_hours %>
-              <%= form.number_field :working_hours, class: "form-control"%>
-
-              <%= form.label :job %>
-              <%= form.text_field :job, class: "form-control"%>
-
-              <%= form.submit "Create", class: "btn btn-primary"%>
-            <% end %>
+            <%= render 'employees/form', btn_text: "Add" %>
             <%= button_to 'Back', get_current_user, method: :get, class: "btn btn-danger" %>
           </div>
         </div>

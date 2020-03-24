@@ -1,6 +1,4 @@
 class ProjectsController < ApplicationController
-    # before_action :get_current_employee
-
     def new
         @project = Project.new
     end
@@ -22,18 +20,8 @@ class ProjectsController < ApplicationController
         redirect_to edit_employee_path(@employee)
     end
 
-    # def destroy
-    #     project = Project.find(params[:id])
-    #     @employee = Assignment.find_by(project_id: project.id).employee
-    #     @employee.remove_assignment(project)
-    #     redirect_to edit_employee_path(@employee)
-    # end
-
     private
         def project_params
             params.require(:project).permit(:name, :telegram_id)
-        end
-
-        def get_current_employee
         end
 end
