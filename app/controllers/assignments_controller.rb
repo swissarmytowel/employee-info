@@ -1,4 +1,5 @@
 class AssignmentsController < ApplicationController
+    # Whe only ever need to destroy assignment
     def destroy
         assignment = Assignment.find(params[:id])
         employee = assignment.employee
